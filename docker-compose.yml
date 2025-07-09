@@ -1,0 +1,10 @@
+name: obligatorio_final
+services: 
+  frontend_db:
+    image: frontend_db
+    container_name: frontend_db
+    build:
+      context: ./front
+    command: sh -c "npm install && npm start"
+    volumes:
+      - ./front/:/front
