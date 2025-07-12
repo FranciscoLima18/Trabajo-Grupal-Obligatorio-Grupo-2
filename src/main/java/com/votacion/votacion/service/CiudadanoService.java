@@ -2,19 +2,17 @@ package com.votacion.votacion.service;
 
 import com.votacion.votacion.model.Ciudadano;
 import com.votacion.votacion.repository.CiudadanoRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class CiudadanoService {
 
     private final CiudadanoRepository ciudadanoRepository;
-
-    public CiudadanoService(CiudadanoRepository ciudadanoRepository) {
-        this.ciudadanoRepository = ciudadanoRepository;
-    }
 
     public List<Ciudadano> findAll() {
         return ciudadanoRepository.findAll();

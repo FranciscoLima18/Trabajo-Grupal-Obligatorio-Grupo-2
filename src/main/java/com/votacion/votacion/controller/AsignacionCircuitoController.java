@@ -4,7 +4,9 @@ import com.votacion.votacion.model.AsignacionCircuito;
 import com.votacion.votacion.model.AsignacionCircuitoId;
 import com.votacion.votacion.service.AsignacionCircuitoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.votacion.votacion.dto.AsignacionCircuitoDTO;
 
 import java.util.List;
 
@@ -20,10 +22,12 @@ public class AsignacionCircuitoController {
         return service.findAll();
     }
 
-    @PostMapping
-    public AsignacionCircuito create(@RequestBody AsignacionCircuito asignacion) {
-        return service.save(asignacion);
-    }
+@PostMapping
+public ResponseEntity<AsignacionCircuito> create(@RequestBody AsignacionCircuitoDTO dto) {
+    AsignacionCircuito asignacion = service.createFromIds(dto.getCiudadanoId(), dto.getCircuitoId());
+    return ResponseEntity.ok(asignacion);
+}
+
 
     @DeleteMapping
     public void delete(@RequestBody AsignacionCircuitoId id) {
