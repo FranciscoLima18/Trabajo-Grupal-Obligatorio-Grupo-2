@@ -6,5 +6,8 @@ services:
     build:
       context: ./front
     command: sh -c "npm install && npm start"
+    ports:
+      - "4200:4200"
     volumes:
       - ./front/:/front
+      
