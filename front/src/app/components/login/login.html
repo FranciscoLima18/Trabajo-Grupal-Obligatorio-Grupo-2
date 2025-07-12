@@ -2,10 +2,18 @@
   <h2 class="login-title">Ingreso al Sistema de Votación</h2>
 
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <input type="text" placeholder="Cédula de Identidad" formControlName="ci" />
-    
+    <input
+      type="text"
+      placeholder="Cédula de Identidad"
+      formControlName="ci"
+    />
+
     <button type="submit" [disabled]="loginForm.invalid">Ingresar</button>
 
     <div class="login-error" *ngIf="errorMsg">{{ errorMsg }}</div>
   </form>
+
+  <div class="register-link">
+    ¿No se registró? <a [routerLink]="['/registro']">Acceda aquí</a>
+  </div>
 </div>

@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
 import { Login } from './components/login/login';
 import { HomeCiudadano } from './components/home-ciudadano/home-ciudadano';
-import { Votar } from './components/votar/votar';
 import { ResultadosEleccion } from './components/resultados-eleccion/resultados-eleccion';
-import { ResultadosCircuitos } from './components/miembros_mesa/resultados-circuitos/resultados-circuitos';
+import { ResultadosCircuitos } from './components/resultados-circuitos/resultados-circuitos';
+import { Registro } from './components/registro/registro';
+import { Votar } from './components/votar/votar';
 
 export const routes: Routes = [
     {
@@ -11,12 +12,12 @@ export const routes: Routes = [
         component: Login
     },
     {
-        path: 'home-ciudadano',
-        component: HomeCiudadano
+        path: 'registro',
+        component: Registro
     },
     {
-        path: 'votar',
-        component: Votar
+        path: 'home-ciudadano',
+        component: HomeCiudadano
     },
     {
         path: 'Resultados-Elecciones',
@@ -25,5 +26,9 @@ export const routes: Routes = [
     {
         path: 'Resultados-Circuitos',
         component: ResultadosCircuitos
+    },
+    {
+        path: 'votar',
+        component: Votar
     }
 ];
