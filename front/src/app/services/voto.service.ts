@@ -18,8 +18,9 @@ export class VotoService {
   getVotos(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
-
+/*
   getVotoPorCiudadano(ciudadanoId: number, eleccionId: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/ciudadano/${ciudadanoId}/eleccion/${eleccionId}`);
   }
+*/
 }

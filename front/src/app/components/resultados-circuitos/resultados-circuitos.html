@@ -1,1 +1,19 @@
-<p>resultados-circuitos works!</p>
+<div class="botones-superiores">
+  <button (click)="volverHomeCiudadano()">Volver</button>
+</div>
+<div class="resultados-container">
+  <h2 class="title">📊 Resultados del Circuito</h2>
+
+  <div *ngIf="mensaje" class="alert">{{ mensaje }}</div>
+
+  <div *ngIf="resultadosCargados" class="resultados-card">
+    <h3 class="resultados-title">Resumen de Votación</h3>
+    <ul class="resultados-list">
+      <li><strong>Total de votos emitidos:</strong> {{ votosTotales }}</li>
+      <li><strong>Votos válidos:</strong> ✅ {{ votosValidos }}</li>
+      <li><strong>Votos en blanco:</strong> 🗳️ {{ votosEnBlanco }}</li>
+      <li><strong>Votos anulados:</strong> ❌ {{ votosAnulados }}</li>
+      <li><strong>Votos observados:</strong> ⚠️ {{ votosObservados }}</li>
+    </ul>
+  </div>
+</div>

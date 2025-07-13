@@ -1,0 +1,14 @@
+<div class="botones-superiores">
+  <button (click)="volver()">Volver</button>
+</div>
+<div class="container">
+  <h2>Circuitos disponibles</h2>
+
+  <div *ngFor="let circuito of circuitos" class="circuito-card">
+    <p><strong>Departamento:</strong> {{ circuito.departamento }}</p>
+    <p><strong>Localidad:</strong> {{ circuito.localidad }}</p>
+    <p><strong>Barrio:</strong> {{ circuito.barrio || 'N/A' }}</p>
+    <p><strong>Accesible:</strong> {{ circuito.esAccesible ? 'Sí' : 'No' }}</p>
+    <p class="asignado" *ngIf="estaAsignado(circuito.circuitoId)">✅ Este circuito está asignado a vos</p>
+  </div>
+</div>

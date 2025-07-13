@@ -37,14 +37,17 @@ loginForm!: FormGroup;
     this.ciudadanoService.getCiudadanos().subscribe(ciudadanos => {
       const ciudadano = ciudadanos.find(c => c.ci === ciIngresado);
 
-      if (ciudadano) {
+        if (ciudadano) {
+          // Guardar en localStorage para persistencia
+          localStorage.setItem('ciudadanoId', ciudadano.ciudadanoId.toString());
+
         if (ciIngresado === this.presidenteCI) {
+          localStorage.setItem('ciudadanoId', ciudadano.ciudadanoId.toString());
           this.router.navigate([`/home-mesa`, ciudadano.ciudadanoId]);
         } else {
+          localStorage.setItem('ciudadanoId', ciudadano.ciudadanoId.toString());
           this.router.navigate([`/home-ciudadano`, ciudadano.ciudadanoId]);
         }
-      } else {
-        this.errorMsg = 'Cédula no registrada';
       }
     });
   }

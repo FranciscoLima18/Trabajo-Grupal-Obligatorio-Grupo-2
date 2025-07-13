@@ -1,1 +1,41 @@
-<p>votar works!</p>
+<div class="botones-superiores">
+  <button (click)="volverHomeCiudadano()">Volver</button>
+</div>
+<div class="votar-container" *ngIf="ciudadano">
+  <h2>Bienvenido/a, {{ ciudadano.nombreCompleto }}</h2>
+  <p><strong>Elección actual:</strong> {{ eleccionActual?.tipo | titlecase }}</p>
+
+  <p><strong>Credencial Cívica:</strong> {{ ciudadano.cc }}</p>
+  <p><strong>Cédula:</strong> {{ ciudadano.ci }}</p>
+
+  <div>
+    <label for="circuito">Seleccioná el circuito donde vas a votar:</label>
+    <select [(ngModel)]="circuitoSeleccionadoId" id="circuito">
+      <option *ngFor="let c of circuitos" [ngValue]="c.circuitoId">{{ c.departamento }} - {{ c.localidad }}</option>
+    </select>
+
+  </div>
+
+  <div class="listas">
+    <h3>Listas disponibles</h3>
+    <div *ngFor="let lista of listas">
+      <label>
+        <input type="checkbox" [value]="lista.listaId" (change)="toggleLista(lista.listaId)">
+        Lista {{ lista.numeroLista }} - {{ lista.organo }} - {{ getNombrePartido(lista.partidoId) }}
+      </label>
+    </div>
+  </div>
+
+  <div class="papeletas">
+    <h3>Papeletas</h3>
+    <div *ngFor="let pap of papeletas">
+      <label>
+        <input type="checkbox" [value]="pap.papeletaId" (change)="togglePapeleta(pap.papeletaId)">
+        {{ pap.tipo }} ({{ pap.color }})
+      </label>
+    </div>
+  </div>
+
+  <button (click)="emitirVoto()">Emitir Voto</button>
+  <p class="mensaje" *ngIf="mensaje">{{ mensaje }}</p>
+</div>

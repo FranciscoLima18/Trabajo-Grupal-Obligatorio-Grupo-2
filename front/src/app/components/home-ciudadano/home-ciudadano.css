@@ -1,0 +1,101 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; 
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f8f9fa;
+}
+
+.login-container {
+  max-width: 500px;
+  width: 100%;
+  padding: 2rem;
+  min-height: 200px; 
+  background-color: #ffffff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  text-align: center;
+
+  /* animación opcional */
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.login-title {
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  font-size: 1.6rem;
+}
+
+h3 {
+  margin-top: 2rem;
+  color: #34495e;
+}
+
+button {
+  padding: 0.6rem 1.2rem;
+  background-color: #2e86de;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 0.5rem;
+}
+
+button:hover {
+  background-color: #1b4f72;
+}
+
+hr {
+  margin: 1.2rem 0;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+span {
+  color: green;
+  font-weight: bold;
+}
+
+.eleccion-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  margin: 1rem 0;
+}
+
+.eleccion-info {
+  font-weight: bold;
+  flex-grow: 1;
+}
+
+.eleccion-boton {
+  margin-left: 0.5rem;
+}
+
+.espaciado-boton {
+  margin-right: 16px;
+}
+
+.botones-superiores {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  gap: 10px;
+}

@@ -1,1 +1,53 @@
-<p>resultados-eleccion works!</p>
+<div class="resultados-container">
+  <h2>Resultados Generales de Elecciones</h2>
+
+  <div *ngFor="let eleccion of elecciones">
+    <h3>Elección: {{ eleccion.tipo | titlecase }} (ID: {{ eleccion.eleccionId }})</h3>
+
+    <div *ngIf="resultadosAgrupados[eleccion.eleccionId]">
+
+      <!-- Resultados por Departamento -->
+      <section>
+        <h4>Por Departamento</h4>
+        <ul>
+          <li *ngFor="let dep of getKeys(resultadosAgrupados[eleccion.eleccionId].porDepartamento)">
+            <strong>{{ dep }}:</strong>
+            Válidos: {{ resultadosAgrupados[eleccion.eleccionId].porDepartamento[dep].validos }},
+            Observados: {{ resultadosAgrupados[eleccion.eleccionId].porDepartamento[dep].observados }},
+            Anulados: {{ resultadosAgrupados[eleccion.eleccionId].porDepartamento[dep].anulados }}
+          </li>
+        </ul>
+      </section>
+
+      <!-- Resultados por Partido -->
+      <section>
+        <h4>Por Partido</h4>
+        <ul>
+          <li *ngFor="let partidoId of getKeys(resultadosAgrupados[eleccion.eleccionId].porPartido)">
+            <strong>Partido {{ partidoId }}:</strong>
+            Válidos: {{ resultadosAgrupados[eleccion.eleccionId].porPartido[partidoId].validos }},
+            Observados: {{ resultadosAgrupados[eleccion.eleccionId].porPartido[partidoId].observados }},
+            Anulados: {{ resultadosAgrupados[eleccion.eleccionId].porPartido[partidoId].anulados }}
+          </li>
+        </ul>
+      </section>
+
+      <!-- Resultados por Candidato -->
+      <section>
+        <h4>Por Candidato</h4>
+        <ul>
+          <li *ngFor="let candidatoId of getKeys(resultadosAgrupados[eleccion.eleccionId].porCandidato)">
+            <strong>Candidato {{ candidatoId }}:</strong>
+            Válidos: {{ resultadosAgrupados[eleccion.eleccionId].porCandidato[candidatoId].validos }},
+            Observados: {{ resultadosAgrupados[eleccion.eleccionId].porCandidato[candidatoId].observados }},
+            Anulados: {{ resultadosAgrupados[eleccion.eleccionId].porCandidato[candidatoId].anulados }}
+          </li>
+        </ul>
+      </section>
+
+    </div>
+    <div *ngIf="!resultadosAgrupados[eleccion.eleccionId]">
+      <p>No hay votos registrados para esta elección.</p>
+    </div>
+  </div>
+</div>

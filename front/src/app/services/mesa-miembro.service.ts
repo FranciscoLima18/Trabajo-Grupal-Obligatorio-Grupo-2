@@ -26,4 +26,9 @@ export class MesaMiembroService {
   eliminarMiembro(mesaId: number, ciudadanoId: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/mesa/${mesaId}/ciudadano/${ciudadanoId}`);
   }
+
+  getPorCiudadano(ciudadanoId: number): Observable<MesaMiembro[]> {
+    return this.http.get<MesaMiembro[]>(`${this.apiUrl}/buscar-por-ciudadano/${ciudadanoId}`);
+  }
+
 }

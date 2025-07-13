@@ -11,22 +11,22 @@ export class CircuitoService {
 
   constructor(private http: HttpClient) {}
 
+  // Obtener todos los circuitos
   getCircuitos(): Observable<Circuito[]> {
     return this.http.get<Circuito[]>(this.apiUrl);
   }
 
+  // Obtener un circuito por ID
   getCircuito(id: number): Observable<Circuito> {
     return this.http.get<Circuito>(`${this.apiUrl}/${id}`);
   }
 
+  // Crear un nuevo circuito
   crearCircuito(data: Circuito): Observable<Circuito> {
     return this.http.post<Circuito>(this.apiUrl, data);
   }
 
-  actualizarCircuito(id: number, data: Circuito): Observable<Circuito> {
-    return this.http.put<Circuito>(`${this.apiUrl}/${id}`, data);
-  }
-
+  // Eliminar un circuito por ID
   eliminarCircuito(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }

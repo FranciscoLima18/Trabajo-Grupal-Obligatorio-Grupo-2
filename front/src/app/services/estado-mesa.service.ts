@@ -7,11 +7,12 @@ import { EstadoMesa } from '../interfaces/estado-mesa';
   providedIn: 'root'
 })
 export class EstadoMesaService {
-  private apiUrl = 'http://localhost:8080/estado-mesas';
+  private apiUrl = 'http://localhost:8080/api/estado-mesas';
 
   constructor(private http: HttpClient) {}
 
   getEstados(): Observable<EstadoMesa[]> {
     return this.http.get<EstadoMesa[]>(this.apiUrl);
   }
+  
 }

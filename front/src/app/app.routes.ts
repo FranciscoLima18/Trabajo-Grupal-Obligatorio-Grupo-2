@@ -3,8 +3,10 @@ import { Login } from './components/login/login';
 import { HomeCiudadano } from './components/home-ciudadano/home-ciudadano';
 import { ResultadosEleccion } from './components/resultados-eleccion/resultados-eleccion';
 import { ResultadosCircuitos } from './components/resultados-circuitos/resultados-circuitos';
-import { Registro } from './components/registro/registro';
+import { RegistroComponent } from './components/registro/registro';
 import { Votar } from './components/votar/votar';
+import { HomeMesa } from './components/home-mesa/home-mesa';
+import { VerCircuitos } from './components/ver-circuitos/ver-circuitos';
 
 export const routes: Routes = [
     {
@@ -13,22 +15,30 @@ export const routes: Routes = [
     },
     {
         path: 'registro',
-        component: Registro
+        component: RegistroComponent
     },
     {
-        path: 'home-ciudadano',
+        path: 'home-ciudadano/:id',
         component: HomeCiudadano
     },
     {
-        path: 'Resultados-Elecciones',
+        path: 'home-mesa/:id',
+        component: HomeMesa
+    },
+    {
+        path: 'resultados-eleccion',
         component: ResultadosEleccion
     },
     {
-        path: 'Resultados-Circuitos',
+        path: 'home-mesa/:id/resultados-circuitos',
         component: ResultadosCircuitos
     },
     {
-        path: 'votar',
+        path: 'votar/:ciudadanoId/:eleccionId',
         component: Votar
+    },
+    {
+        path: 'circuitos/:id',
+        component: VerCircuitos
     }
 ];

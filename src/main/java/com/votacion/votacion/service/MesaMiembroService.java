@@ -30,4 +30,9 @@ public class MesaMiembroService {
     public void deleteById(MesaMiembroId id) {
         mesaMiembroRepository.deleteById(id);
     }
+
+    public List<MesaMiembro> findByCiudadanoId(Long ciudadanoId) {
+        return mesaMiembroRepository.findByCiudadano_CiudadanoId(ciudadanoId);
+    }
+
 }

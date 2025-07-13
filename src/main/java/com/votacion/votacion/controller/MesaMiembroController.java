@@ -34,6 +34,11 @@ public class MesaMiembroController {
         return mesaMiembroService.findAll();
     }
 
+    @GetMapping("/buscar-por-ciudadano/{ciudadanoId}")
+    public List<MesaMiembro> getByCiudadano(@PathVariable Long ciudadanoId) {
+        return mesaMiembroService.findByCiudadanoId(ciudadanoId);
+    }
+
     @GetMapping("/{mesaId}/{ciudadanoId}")
     public Optional<MesaMiembro> getById(@PathVariable Long mesaId, @PathVariable Long ciudadanoId) {
         return mesaMiembroService.findById(new MesaMiembroId(mesaId, ciudadanoId));
@@ -59,4 +64,5 @@ public class MesaMiembroController {
     public void delete(@PathVariable Long mesaId, @PathVariable Long ciudadanoId) {
         mesaMiembroService.deleteById(new MesaMiembroId(mesaId, ciudadanoId));
     }
+
 }

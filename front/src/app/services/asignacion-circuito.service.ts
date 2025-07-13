@@ -7,15 +7,22 @@ import { AsignacionCircuito } from '../interfaces/asignacion-circuito';
   providedIn: 'root'
 })
 export class AsignacionCircuitoService {
-  private apiUrl = 'http://localhost:8080/api/asignacion-circuito';
+  private apiUrl = 'http://localhost:8080/api/asignaciones';
 
   constructor(private http: HttpClient) {}
 
-  asignarCiudadano(data: AsignacionCircuito): Observable<any> {
-    return this.http.post(this.apiUrl, data);
+  // Obtener todas las asignaciones
+  getAll(): Observable<AsignacionCircuito[]> {
+    return this.http.get<AsignacionCircuito[]>(this.apiUrl);
   }
 
-  getAsignacion(ciudadanoId: number): Observable<AsignacionCircuito> {
-    return this.http.get<AsignacionCircuito>(`${this.apiUrl}/ciudadano/${ciudadanoId}`);
+  // Crear asignación desde DTO: { ciudadanoId: number, circuitoId: number }
+  asignarCiudadano(data: { ciudadanoId: number, circuitoId: number }): Observable<AsignacionCircuito> {
+    return this.http.post<AsignacionCircuito>(this.apiUrl, data);
+  }
+
+  // Eliminar asignación pasando el ID compuesto: { ciudadanoId, circuitoId }
+  eliminarAsignacion(id: { ciudadanoId: number, circuitoId: number }): Observable<void> {
+    return this.http.request<void>('delete', this.apiUrl, { body: id });
   }
 }

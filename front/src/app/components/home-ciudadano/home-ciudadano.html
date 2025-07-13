@@ -1,0 +1,31 @@
+<div class="botones-superiores">
+  <button (click)="iraResultadosElecciones()">Resultados Elecciones</button>
+  <button *ngIf="esPresidente" (click)="irAHomeMesa()">Administrar</button>
+  <button (click)="cerrarSesion()">Cerrar sesión</button>
+  <button (click)="verCircuitos()">Circuitos</button>
+</div>
+<div class="login-container" *ngIf="ciudadano">
+  <h2 class="login-title">Bienvenido/a: {{ ciudadano.nombreCompleto }}</h2>
+
+  <p><strong>CI:</strong> {{ ciudadano.ci }}</p>
+  <!-- <p><strong>Circuito asignado:</strong> {{ circuitoAsignado.circuitoId }}</p> -->
+<h3>Elecciones disponibles:</h3>
+
+<hr *ngIf="elecciones.length > 0" />
+
+<div *ngFor="let eleccion of elecciones">
+  <div class="eleccion-item">
+    <div class="eleccion-info">
+      {{ eleccion.tipo | titlecase }} ({{ eleccion.fecha }})
+    </div>
+    <div class="eleccion-boton">
+      <button
+        *ngIf="!yaVoto(eleccion.eleccionId)"
+        (click)="irAVotar(eleccion.eleccionId)"
+      >
+        Votar
+      </button>
+      <span *ngIf="yaVoto(eleccion.eleccionId)">✅ Ya votaste</span>
+    </div>
+  </div>
+</div>

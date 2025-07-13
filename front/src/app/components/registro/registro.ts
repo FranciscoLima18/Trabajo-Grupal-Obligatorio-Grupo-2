@@ -7,11 +7,12 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
+  standalone: true,
   imports: [FormsModule, RouterModule],
   templateUrl: './registro.html',
-  styleUrl: './registro.css'
+  styleUrls: ['./registro.css']
 })
-export class Registro {
+export class RegistroComponent {
 
   ciudadano: Partial<Ciudadano> = {};
 

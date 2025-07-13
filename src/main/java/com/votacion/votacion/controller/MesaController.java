@@ -60,6 +60,25 @@ public class MesaController {
         return ResponseEntity.ok(mesaService.save(mesa));
     }
 
+    @PostMapping("/{id}/cerrar")
+    public ResponseEntity<Mesa> cerrarMesa(@PathVariable Long id) {
+        Mesa mesa = mesaService.findById(id);
+        if (mesa == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        mesa.setFechaHoraCierre(LocalDateTime.now());
+
+        EstadoMesa estadoCerrada = estadoMesaRepository.findById(2L) 
+                .orElseThrow(() -> new RuntimeException("Estado 'CERRADA' no encontrado"));
+
+        mesa.setEstadoMesa(estadoCerrada);
+
+        Mesa cerrada = mesaService.save(mesa);
+        return ResponseEntity.ok(cerrada);
+    }
+
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         mesaService.deleteById(id);
