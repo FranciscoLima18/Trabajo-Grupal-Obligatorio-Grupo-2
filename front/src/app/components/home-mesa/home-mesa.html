@@ -1,0 +1,30 @@
+<div class="botones-superiores">
+  <button (click)="volverHomeCiudadano()">Volver</button>
+</div>
+<div class="login-container" *ngIf="ciudadano">
+  <h2 class="login-title">Panel del Presidente de Mesa</h2>
+
+  <p><strong>Nombre:</strong> {{ ciudadano.nombreCompleto }}</p>
+  <p><strong>Cédula:</strong> {{ ciudadano.ci }}</p>
+
+  <div *ngIf="mesaAsignada">
+    <hr />
+    <button [routerLink]="['/home-mesa', ciudadanoId, 'resultados-circuitos']">
+      Ver Resultados del Circuito
+    </button>
+    <p><strong>ID de Mesa:</strong> {{ mesaAsignada.mesaId }}</p>
+    <p><strong>Estado de la Mesa:</strong> {{ estadoMesa }}</p>
+
+    <button *ngIf="estadoMesa === 'ABIERTA'" (click)="cerrarMesa()">
+      Cerrar Mesa
+    </button>
+
+    <p *ngIf="mensaje">{{ mensaje }}</p>
+  </div>
+
+  <div *ngIf="!mesaAsignada">
+    <p class="login-error">No se encontró una mesa asignada como presidente.</p>
+  </div>
+
+  <div *ngIf="estadoMesa === 'CERRADA'"></div>
+</div>

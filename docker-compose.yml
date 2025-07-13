@@ -1,0 +1,41 @@
+name: obligatorio_final
+version: '3.8'
+
+services:
+  frontend_db:
+    build:
+      context: ./front
+    container_name: frontend_db
+    command: sh -c "npm install && npm start"
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./front:/front
+    depends_on:
+      - backend_db
+    networks:
+      - red_interna
+
+  backend_db:
+    build:
+      context: .
+    container_name: backend_db
+    ports:
+      - "8080:8080"
+    networks:
+      - red_interna
+
+  database-db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: votacion_db
+    ports:
+      - "5432:5432"
+    networks:
+        - red_interna
+
+networks:
+  red_interna:
+    driver: bridge
